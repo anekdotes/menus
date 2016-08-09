@@ -71,7 +71,7 @@ class Menus
    *
    * @return array All menu's link
    */
-  public static function empty()
+  public static function clear()
   {
       static::$menuItems = [];
   }

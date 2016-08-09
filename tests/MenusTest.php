@@ -65,7 +65,7 @@ class MenusTest extends PHPUnit_Framework_TestCase
 
     public function testMenus6()
     {
-        Menus::empty();
+        Menus::clear();
         Menus::addItem('test 1', '/test1', 'fa-patate');
         $items = Menus::get('', 1);
         $this->assertEquals(count($items), 1);
@@ -73,7 +73,7 @@ class MenusTest extends PHPUnit_Framework_TestCase
 
     public function testMenus7()
     {
-        Menus::empty();
+        Menus::clear();
         Menus::addItem('test 1', '/test1', 'fa-potato');
         Menus::addItem('test 2', '/test2', 'fa-tomato');
         $items = Menus::get('', 1);
@@ -82,7 +82,7 @@ class MenusTest extends PHPUnit_Framework_TestCase
 
     public function testMenus8()
     {
-        Menus::empty();
+        Menus::clear();
         Menus::addItem('test 1', '/test1', 'fa-potato');
         Menus::addItem('test 2', '/test2', 'fa-tomato');
         $items = Menus::main();
@@ -91,7 +91,7 @@ class MenusTest extends PHPUnit_Framework_TestCase
 
     public function testMenus9()
     {
-        Menus::empty();
+        Menus::clear();
         Menus::addItem('test 1', '/test1', 'fa-potato', 1, 2);
         Menus::addItem('test 2', '/test2', 'fa-tomato', 1, 1);
         $items = Menus::main();
@@ -100,7 +100,7 @@ class MenusTest extends PHPUnit_Framework_TestCase
 
     public function testMenus10()
     {
-        Menus::empty();
+        Menus::clear();
         Menus::addItem('test 1', '/test1', 'fa-potato', 1, 2);
         Menus::addItem('test 2', '/test2', 'fa-tomato', 1, 1);
         $items = Menus::main(SORT_DESC);
