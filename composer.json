@@ -1,11 +1,12 @@
 {
-  "name": "anekdotes/pagination",
+  "name": "anekdotes/menus",
   "type": "library",
-  "description": "Utility to generate an intelligent ``range`` of links based on the current page and total pages.",
+  "description": "Utility to generate a static array full of links",
   "keywords": [
-    "pagination",
-    "page",
-    "pager"
+    "menus",
+    "menu",
+    "links",
+    "link"
   ],
   "license": "MIT",
   "authors": [
@@ -16,7 +17,8 @@
     }
   ],
   "require": {
-    "php": ">=5.6.0"
+    "php": ">=5.6.0",
+    "anekdotes/support": "<2.0.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~5.4",
