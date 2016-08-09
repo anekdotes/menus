@@ -1,0 +1,35 @@
+{
+  "name": "anekdotes/pagination",
+  "type": "library",
+  "description": "Utility to generate an intelligent ``range`` of links based on the current page and total pages.",
+  "keywords": [
+    "pagination",
+    "page",
+    "pager"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mathieu Gosselin",
+      "email": "mathieu.gosselin@anekdotes.com",
+      "homepage": "http://www.anekdotes.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~5.4",
+    "codacy/coverage": "^1.0"
+  },
+  "autoload": {
+      "classmap": [
+          "src/"
+      ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  }
+}
