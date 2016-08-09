@@ -15,43 +15,48 @@ use Anekdotes\Support\Str;
 
 class Menus
 {
-  /**
-   * Array containing all menu's link of different levels
+    /**
+   * Array containing all menu's link of different levels.
+   *
    * @var array
    */
   private static $menuItems = [];
 
   /**
-   * Add a menu's link to the console
+   * Add a menu's link to the console.
+   *
    * @param string  $title     link title
    * @param string  $url       link url
    * @param string  $icon      link icon
-   * @param integer $level     link level
-   * @param integer $priority  link priority (for order purposes)
+   * @param int $level     link level
+   * @param int $priority  link priority (for order purposes)
    * @param string  $namespace link title
    */
-  public static function addItem($title, $url, $icon, $level = 1, $priority = 0, $namespace = '') {
+  public static function addItem($title, $url, $icon, $level = 1, $priority = 0, $namespace = '')
+  {
       $uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
-      $classes = "";
+      $classes = '';
       if ($level == 1 && Str::contains($uri, $url)) {
-          $classes = "active";
+          $classes = 'active';
       } elseif ($level > 1 && $uri == $url) {
-          $classes = "active";
+          $classes = 'active';
       }
 
       static::$menuItems[$level][] = [
-          'title' => $title,
+          'title'     => $title,
           'namespace' => $namespace,
-          'url' => $url,
-          'icon' => $icon,
-          'priority' => $priority,
-          'classes' => $classes
+          'url'       => $url,
+          'icon'      => $icon,
+          'priority'  => $priority,
+          'classes'   => $classes,
       ];
   }
 
   /**
-   * Get all menu's link ordered by $sort parameter (default: SORT_ASC)
+   * Get all menu's link ordered by $sort parameter (default: SORT_ASC).
+   *
    * @param  constant $sort sort constant
+   *
    * @return array All menu's link
    */
   public static function main($sort = SORT_ASC)
@@ -60,8 +65,10 @@ class Menus
   }
 
   /**
-   * Get all menu's link ordered by $sort parameter (default: SORT_ASC)
+   * Get all menu's link ordered by $sort parameter (default: SORT_ASC).
+   *
    * @param  constant $sort sort constant
+   *
    * @return array All menu's link
    */
   public static function empty()
@@ -70,23 +77,25 @@ class Menus
   }
 
   /**
-   * Get all menu's link by $namespace and by $level
+   * Get all menu's link by $namespace and by $level.
+   *
    * @param  string $namespace namespace to get
-   * @param  integer $level     level to get
+   * @param  int $level     level to get
+   *
    * @return array All menu's link for a given $namespace
    */
   public static function get($namespace, $level)
   {
       if (isset(static::$menuItems[$level])) {
-          $items = array_filter(static::$menuItems[$level], function($a) use($namespace) {
+          $items = array_filter(static::$menuItems[$level], function ($a) use ($namespace) {
               if ($a['namespace'] == $namespace) {
                   return $a;
               }
           });
 
-        return $items;
+          return $items;
       }
 
-      return array();
+      return [];
   }
 }

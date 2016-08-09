@@ -45,65 +45,65 @@ class MenusTest extends PHPUnit_Framework_TestCase
 
     public function testMenus4()
     {
-      try {
-        Menus::addItem('test 1', '/test1', 'fa-patate');
-        $items = Menus::get();
-      } catch (\Exception $e) {
-          $this->assertTrue(true);
-      }
+        try {
+            Menus::addItem('test 1', '/test1', 'fa-patate');
+            $items = Menus::get();
+        } catch (\Exception $e) {
+            $this->assertTrue(true);
+        }
     }
 
     public function testMenus5()
     {
-      try {
-        Menus::addItem('test 1', '/test1', 'fa-patate');
-        $items = Menus::get('');
-      } catch (\Exception $e) {
-          $this->assertTrue(true);
-      }
+        try {
+            Menus::addItem('test 1', '/test1', 'fa-patate');
+            $items = Menus::get('');
+        } catch (\Exception $e) {
+            $this->assertTrue(true);
+        }
     }
 
     public function testMenus6()
     {
-      Menus::empty();
-      Menus::addItem('test 1', '/test1', 'fa-patate');
-      $items = Menus::get('', 1);
-      $this->assertEquals(count($items), 1);
+        Menus::empty();
+        Menus::addItem('test 1', '/test1', 'fa-patate');
+        $items = Menus::get('', 1);
+        $this->assertEquals(count($items), 1);
     }
 
     public function testMenus7()
     {
-      Menus::empty();
-      Menus::addItem('test 1', '/test1', 'fa-potato');
-      Menus::addItem('test 2', '/test2', 'fa-tomato');
-      $items = Menus::get('', 1);
-      $this->assertEquals(count($items), 2);
+        Menus::empty();
+        Menus::addItem('test 1', '/test1', 'fa-potato');
+        Menus::addItem('test 2', '/test2', 'fa-tomato');
+        $items = Menus::get('', 1);
+        $this->assertEquals(count($items), 2);
     }
 
     public function testMenus8()
     {
-      Menus::empty();
-      Menus::addItem('test 1', '/test1', 'fa-potato');
-      Menus::addItem('test 2', '/test2', 'fa-tomato');
-      $items = Menus::main();
-      $this->assertEquals(count($items), 2);
+        Menus::empty();
+        Menus::addItem('test 1', '/test1', 'fa-potato');
+        Menus::addItem('test 2', '/test2', 'fa-tomato');
+        $items = Menus::main();
+        $this->assertEquals(count($items), 2);
     }
 
     public function testMenus9()
     {
-      Menus::empty();
-      Menus::addItem('test 1', '/test1', 'fa-potato', 1, 2);
-      Menus::addItem('test 2', '/test2', 'fa-tomato', 1, 1);
-      $items = Menus::main();
-      $this->assertEquals($items[0]['title'], 'test 2');
+        Menus::empty();
+        Menus::addItem('test 1', '/test1', 'fa-potato', 1, 2);
+        Menus::addItem('test 2', '/test2', 'fa-tomato', 1, 1);
+        $items = Menus::main();
+        $this->assertEquals($items[0]['title'], 'test 2');
     }
 
     public function testMenus10()
     {
-      Menus::empty();
-      Menus::addItem('test 1', '/test1', 'fa-potato', 1, 2);
-      Menus::addItem('test 2', '/test2', 'fa-tomato', 1, 1);
-      $items = Menus::main(SORT_DESC);
-      $this->assertEquals($items[0]['title'], 'test 1');
+        Menus::empty();
+        Menus::addItem('test 1', '/test1', 'fa-potato', 1, 2);
+        Menus::addItem('test 2', '/test2', 'fa-tomato', 1, 1);
+        $items = Menus::main(SORT_DESC);
+        $this->assertEquals($items[0]['title'], 'test 1');
     }
 }
