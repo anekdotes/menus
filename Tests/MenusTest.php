@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace tests;
+namespace Tests;
 
 use Anekdotes\Menus\Menus;
 use PHPUnit_Framework_TestCase;
