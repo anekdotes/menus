@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Tests;
+namespace tests;
 
 use Anekdotes\Menus\Menus;
 use PHPUnit_Framework_TestCase;
@@ -45,22 +45,16 @@ class MenusTest extends PHPUnit_Framework_TestCase
 
     public function testMenus4()
     {
-        try {
-            Menus::addItem('test 1', '/test1', 'fa-patate');
-            $items = Menus::get();
-        } catch (\Exception $e) {
-            $this->assertTrue(true);
-        }
+        Menus::addItem('test 1', '/test1', 'fa-patate');
+        $items = Menus::get();
+        $this->assertEquals($items[0]['title'], 'test 1');
     }
 
     public function testMenus5()
     {
-        try {
-            Menus::addItem('test 1', '/test1', 'fa-patate');
-            $items = Menus::get('');
-        } catch (\Exception $e) {
-            $this->assertTrue(true);
-        }
+        Menus::addItem('test 1', '/test1', 'fa-patate');
+        $items = Menus::get('');
+        $this->assertEquals($items[0]['title'], 'test 1');
     }
 
     public function testMenus6()
@@ -115,5 +109,21 @@ class MenusTest extends PHPUnit_Framework_TestCase
         Menus::removeItem(1, 2);
         $items = Menus::main();
         $this->assertEquals(count($items), 1);
+    }
+
+    public function testMenus12()
+    {
+        Menus::clear();
+        Menus::addItem('test 1', '/test1', 'fa-potato', 1, 2);
+        Menus::addItem('test 2', '/test2', 'fa-tomato', 1, 1);
+        $item = Menus::find(1, 2);
+        $this->assertEquals($item['title'], 'test 1');
+    }
+
+    public function testMenus13()
+    {
+        Menus::clear();
+        $item = Menus::find(2, 2);
+        $this->assertEquals($item, null);
     }
 }

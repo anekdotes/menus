@@ -23,7 +23,7 @@ class Menus
   private static $menuItems = [];
 
   /**
-   * Add a menu's link to the console.
+   * Add a menu's link to the array.
    *
    * @param string  $title     link title
    * @param string  $url       link url
@@ -53,16 +53,41 @@ class Menus
       ];
   }
 
+  /**
+   * Remove a menu's link to the array.
+   *
+   * @param int $level     link level
+   * @param int $priority  link priority
+   */
   public static function removeItem($level = 1, $priority = 0)
   {
       if (isset(static::$menuItems[$level])) {
           foreach (static::$menuItems[$level] as $index => $menu) {
-              if ($menu['priority'] == $priority){
+              if ($menu['priority'] == $priority) {
                   unset(static::$menuItems[$level][$index]);
                   break;
               }
           }
       }
+  }
+
+  /**
+   * Find a menu's link from the array.
+   *
+   * @param int $level     link level
+   * @param int $priority  link priority
+   */
+  public static function find($level = 1, $priority = 0)
+  {
+      if (isset(static::$menuItems[$level])) {
+          foreach (static::$menuItems[$level] as $index => $menu) {
+              if ($menu['priority'] == $priority) {
+                  return static::$menuItems[$level][$index];
+              }
+          }
+      }
+
+      return;
   }
 
   /**
@@ -97,7 +122,7 @@ class Menus
    *
    * @return array All menu's link for a given $namespace
    */
-  public static function get($namespace, $level)
+  public static function get($namespace = '', $level = 1)
   {
       if (isset(static::$menuItems[$level])) {
           $items = array_filter(static::$menuItems[$level], function ($a) use ($namespace) {
