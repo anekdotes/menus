@@ -36,6 +36,7 @@ class Menus
   {
       $uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
       $classes = '';
+
       if ($level == 1 && Str::contains($uri, $url)) {
           $classes = 'active';
       } elseif ($level > 1 && $uri == $url) {
@@ -50,6 +51,18 @@ class Menus
           'priority'  => $priority,
           'classes'   => $classes,
       ];
+  }
+
+  public static function removeItem($level = 1, $priority = 0)
+  {
+      if (isset(static::$menuItems[$level])) {
+          foreach (static::$menuItems[$level] as $index => $menu) {
+              if ($menu['priority'] == $priority){
+                  unset(static::$menuItems[$level][$index]);
+                  break;
+              }
+          }
+      }
   }
 
   /**

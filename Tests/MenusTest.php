@@ -106,4 +106,14 @@ class MenusTest extends PHPUnit_Framework_TestCase
         $items = Menus::main(SORT_DESC);
         $this->assertEquals($items[0]['title'], 'test 1');
     }
+
+    public function testMenus11()
+    {
+        Menus::clear();
+        Menus::addItem('test 1', '/test1', 'fa-potato', 1, 2);
+        Menus::addItem('test 2', '/test2', 'fa-tomato', 1, 1);
+        Menus::removeItem(1, 2);
+        $items = Menus::main();
+        $this->assertEquals(count($items), 1);
+    }
 }
