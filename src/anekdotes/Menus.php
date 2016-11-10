@@ -86,8 +86,6 @@ class Menus
               }
           }
       }
-
-      return;
   }
 
   /**
