@@ -12,15 +12,15 @@
 namespace Tests;
 
 use Anekdotes\Menus\Menus;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class MenusTest extends PHPUnit_Framework_TestCase
+final class MenusTest extends TestCase
 {
     public function testMenus1()
     {
         try {
             Menus::addItem();
-        } catch (\Exception $e) {
+        } catch (\ArgumentCountError $e) {
             $this->assertTrue(true);
         }
     }
@@ -29,7 +29,7 @@ class MenusTest extends PHPUnit_Framework_TestCase
     {
         try {
             Menus::addItem('');
-        } catch (\Exception $e) {
+        } catch (\ArgumentCountError $e) {
             $this->assertTrue(true);
         }
     }
@@ -38,7 +38,7 @@ class MenusTest extends PHPUnit_Framework_TestCase
     {
         try {
             Menus::addItem('', '');
-        } catch (\Exception $e) {
+        } catch (\ArgumentCountError $e) {
             $this->assertTrue(true);
         }
     }

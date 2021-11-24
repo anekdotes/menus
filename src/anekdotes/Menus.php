@@ -39,7 +39,8 @@ class Menus
 
       if ($level == 1 && Str::contains($uri, $url)) {
           $classes = 'active';
-      } elseif ($level > 1 && $uri == $url) {
+      } 
+      elseif ($level > 1 && $uri == $url) {
           $classes = 'active';
       }
 
