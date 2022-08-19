@@ -66,6 +66,7 @@ class Menus
           foreach (static::$menuItems[$level] as $index => $menu) {
               if ($menu['priority'] == $priority) {
                   unset(static::$menuItems[$level][$index]);
+
                   break;
               }
           }
@@ -128,6 +129,10 @@ class Menus
               if ($a['namespace'] == $namespace) {
                   return $a;
               }
+          });
+
+          usort($items, function($a, $b) {
+            return ($a['priority'] < $b['priority']) ? -1 : 1;
           });
 
           return $items;

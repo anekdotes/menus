@@ -1,6 +1,6 @@
 {
   "name": "anekdotes/menus",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "library",
   "description": "Utility to generate a static array full of links",
   "keywords": [
